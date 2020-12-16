@@ -25,14 +25,12 @@ const App = () => {
     if (serviceType) {
       url = `${url}&type=${serviceType}`;
     }
-
     fetch(url).then(res => res.json()).then(res => setTaxiCab(res));
-
   }
 
   return (
     <Container>
-      <h1 style={{ textAlign: 'center' }}>Taxi Near You</h1>
+      <h1 style={{ textAlign: 'center' }}>Taxi Near Me</h1>
       <div style={{ marginTop: 10 }}>
         <Input fluid type='text' placeholder='Search...' action onChange={inputChnage}>
           <input />
