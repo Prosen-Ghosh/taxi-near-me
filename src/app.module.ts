@@ -1,15 +1,28 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CommandModule } from 'nestjs-command';
+import configuration from './config/configuration';
 import { SeedsModule } from './shared/seeds.module';
 import { TaxisModule } from './taxi/taxi..module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+      isGlobal: true,
+      expandVariables: true,
+      load: [configuration],
+    }),
     // MongoDB Atlas connection uri
-    MongooseModule.forRoot("mongodb+srv://root:root@cluster0.mhmbp.mongodb.net/taxi-near-me?retryWrites=true&w=majority", {
-      useNewUrlParser: true, // parse connection string using new method
-      useCreateIndex: true, // will use the leatest method for creating an index
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('database'),
+        useNewUrlParser: true, // parse connection string using new method
+        useCreateIndex: true, // will use the leatest method for creating an index
+      }),
+      inject: [ConfigService],
     }),
     // import all sub module to this root module
     TaxisModule,
