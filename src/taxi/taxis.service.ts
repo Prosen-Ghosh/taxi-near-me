@@ -7,22 +7,24 @@ import { generateGeoLocation } from './seeds/lib';
 export class TaxisService {
     constructor(@InjectModel('Taxi') private readonly taxiModel: Model<ITaxi>) { }
 
-    async findAll(search: string): Promise<ITaxi[]> {
-
+    async findAll(search: string, serviceType: string): Promise<ITaxi[]> {
         const userFackLocation = generateGeoLocation(23.777176, 90.399452, 500)
-        const data = await this.taxiModel.aggregate([
+        const query: any = {
+            isAvailable: true,  
+        }
+        if(serviceType && serviceType.toLowerCase() !== 'all')query.serviceType = serviceType;
+        return await this.taxiModel.aggregate([
             {
                 $geoNear: {
-                   near: { type: "Point", coordinates: userFackLocation },
-                   distanceField: "dist.calculated",
-                   minDistance: 0,
-                   maxDistance: 500,
-                   query: { isAvailable: true },
-                   spherical: true
+                    near: { type: "Point", coordinates: userFackLocation },
+                    distanceField: "dist.calculated",
+                    minDistance: 0,
+                    maxDistance: 500,
+                    query,
+                    spherical: true
                 }
-              }
+            }
         ]);
-        return data
     }
 
     async insertMany(data: any[]): Promise<any> {
