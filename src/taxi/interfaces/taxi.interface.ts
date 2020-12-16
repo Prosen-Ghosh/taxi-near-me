@@ -9,5 +9,6 @@ export interface ITaxi extends Document {
     readonly phone: string;
     readonly serviceType: string;
     readonly currentLocation: IGeoLocation;
-    readonly rating: Number
+    readonly rating: Number;
+    readonly isAvailable: Boolean;
 }

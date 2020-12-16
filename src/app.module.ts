@@ -8,7 +8,8 @@ import { TaxisModule } from './taxi/taxi..module';
   imports: [
     // MongoDB Atlas connection uri
     MongooseModule.forRoot("mongodb+srv://root:root@cluster0.mhmbp.mongodb.net/taxi-near-me?retryWrites=true&w=majority", {
-      useNewUrlParser: true // parse connection string using new method
+      useNewUrlParser: true, // parse connection string using new method
+      useCreateIndex: true, // will use the leatest method for creating an index
     }),
     // import all sub module to this root module
     TaxisModule,

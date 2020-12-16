@@ -33,13 +33,17 @@ export const TaxiSchema = new mongoose.Schema({
         default: 0,
         min: 0,
         max: 5
+    },
+    isAvailable: {
+        type: Boolean,
     }
 }, {
     timestamps: true,
     versionKey: false
 });
+TaxiSchema.index({ currentLocation: "2dsphere" });
 
 export const TaxiModel = mongoose.model('Taxi', TaxiSchema);
 
 // This indexing is required for geo special queries
-TaxiModel.createIndexes({ currentLocation: "2dsphere" });
+// TaxiModel.createIndexes({ currentLocation: "2dsphere" });
