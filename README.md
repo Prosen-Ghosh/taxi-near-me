@@ -12,7 +12,7 @@
 ```bash
 cp .env.example .env
 ```
-make the nessary changes in the `.env` file.
+Default host and port will be `http://localhost:5000/api` or make the nessary changes in the `.env` file.
 
 
 ## Installation Backend
@@ -26,7 +26,7 @@ $ npm install
 cd client
 cp .env.example .env
 ```
-make the nessary changes in the `.env` file.
+Default host and port will be `http://localhost:3000`. vist and search near by taxi or make the nessary changes in the `.env` file.
 ## Installation Frontend
 
 ```bash

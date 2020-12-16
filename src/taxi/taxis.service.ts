@@ -8,10 +8,10 @@ import { generateGeoLocation } from './seeds/lib';
 export class TaxisService {
     constructor(@InjectModel('Taxi') private readonly taxiModel: Model<ITaxi>, private readonly configService: ConfigService) { }
 
-    async findAll(search: string, serviceType: string): Promise<ITaxi[]> {
+    async search(search: string, serviceType: string): Promise<ITaxi[]> {
         const config = this.configService.get('userSeeder');
         const userFackLocation = generateGeoLocation(config.currentLat, config.currentLong, config.findWithInMeter);
-        
+
         const query: any = {
             isAvailable: true,  
         }
@@ -22,7 +22,7 @@ export class TaxisService {
                     near: { type: "Point", coordinates: userFackLocation },
                     distanceField: "dist.calculated",
                     minDistance: 0,
-                    maxDistance: 500,
+                    maxDistance: config.findWithInMeter,
                     query,
                     spherical: true
                 }

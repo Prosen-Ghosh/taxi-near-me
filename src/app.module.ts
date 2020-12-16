@@ -18,7 +18,7 @@ import { TaxisModule } from './taxi/taxi..module';
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
-        uri: configService.get<string>('database'),
+        uri: configService.get<string>('database.uri'),
         useNewUrlParser: true, // parse connection string using new method
         useCreateIndex: true, // will use the leatest method for creating an index
       }),

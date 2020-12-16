@@ -6,7 +6,7 @@ import { TaxisService } from './taxis.service';
 export class TaxisController {
     constructor(private readonly taxiService: TaxisService) { }
     @Get()
-    async findAll(@Query('search') search: string, @Query('type') serviceType: string): Promise<ITaxi[]> {
-        return this.taxiService.findAll(search, serviceType);
+    async search(@Query('search') search: string, @Query('type') serviceType: string): Promise<ITaxi[]> {
+        return await this.taxiService.search(search, serviceType);
     }
 }
