@@ -1,10 +1,8 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
-
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This is a simple taxi cab search application. This application backend is written on NextJs and frontend is written on ReactJs. Any user can search using his location (like: dhaka `i.e`: after clicking search button the application will make a fake coordinate to search nearby available taxi cab. Without search key button will be disabled) and filter(like: Normal, Premium). User can combine this search and filter to get the desire data set.
+
+
 
 
 ## Setup Backend Environment

@@ -37,7 +37,7 @@ const App = () => {
         <Input fluid type='text' placeholder='Search...' action onChange={inputChnage}>
           <input />
           <Select compact options={options} defaultValue={serviceType} style={{ minWidth: "100px" }} onChange={selectChnage} />
-          <Button type='submit' onClick={handleSearch}>Search</Button>
+          <Button disabled={!searchKey} type='submit' onClick={handleSearch}>Search</Button>
         </Input>
       </div>
 
