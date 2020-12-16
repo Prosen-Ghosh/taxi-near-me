@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { CommandModule } from 'nestjs-command';
+import { SeedsModule } from './shared/seeds.module';
 import { TaxisModule } from './taxi/taxi..module';
 
 @Module({
@@ -9,7 +11,11 @@ import { TaxisModule } from './taxi/taxi..module';
       useNewUrlParser: true // parse connection string using new method
     }),
     // import all sub module to this root module
-    TaxisModule
+    TaxisModule,
+
+    //  This below modules are for seeder
+    CommandModule,
+    SeedsModule
   ]
 })
 export class AppModule { }
