@@ -21,7 +21,7 @@ const App = () => {
   }
 
   const handleSearch = async () => {
-    let url = `http://localhost:5000/api/taxi?search=${searchKey}`;
+    let url = `${process.env.REACT_APP_BASE_URL}?search=${searchKey}`;
     if (serviceType) {
       url = `${url}&type=${serviceType}`;
     }

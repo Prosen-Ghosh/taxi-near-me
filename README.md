@@ -6,13 +6,45 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+
+## Setup Backend Environment
+
+```bash
+cp .env.example .env
+```
+make the nessary changes in the `.env` file.
+
+
+## Installation Backend
 
 ```bash
 $ npm install
 ```
+## Setup Frontend Environment
 
-## Running the app
+```bash
+cd client
+cp .env.example .env
+```
+make the nessary changes in the `.env` file.
+## Installation Frontend
+
+```bash
+cd client
+$ npm install
+```
+## Seed DB
+
+```bash
+npx nestjs-command create:bulk-taxi
+```
+
+## Remove Data From DB
+```bash
+npx nestjs-command remove:all-taxi
+```
+
+## Running the backend app
 
 ```bash
 # development
@@ -25,7 +57,18 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Running the frontend app
+
+```bash
+cd client
+# development
+$ npm run start
+
+# production
+$ npm run build
+```
+
+## Test Backend
 
 ```bash
 # unit tests
